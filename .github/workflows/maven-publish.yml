@@ -1,6 +1,3 @@
-# This workflow will build a package using Maven and then publish it to GitHub packages when a release is created
-# For more information see: https://github.com/actions/setup-java/blob/main/docs/advanced-usage.md#apache-maven-with-a-settings-path
-
 name: Hello World App CI with Rollback
 
 on:
@@ -8,19 +5,40 @@ on:
     branches: [ main ]
 
 jobs:
-  build-and-run:
+  hello-world:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
+    # --------- Stage 1: Checkout ---------
+    - name: Checkout Code
       uses: actions/checkout@v3
 
-    - name: Run Hello World script
+    # --------- Stage 2: Build ---------
+    - name: Build Stage
+      run: |
+        echo "🔧 Building Hello World App..."
+        # Simulate build (e.g., javac HelloWorld.java or npm install)
+        echo "Build success."
+
+    # --------- Stage 3: Test ---------
+    - name: Test Stage
+      run: |
+        echo "Running tests..."
+        # Simulate a test (e.g., python test_hello.py or npm test)
+        echo "Tests passed."
+
+    # --------- Stage 4: Deploy ---------
+    - name: Deploy Stage
       run: |
         echo "Deploying Hello World App..."
+        # Simulate deployment (e.g., start a server or upload to a cloud)
+        echo "Hello, World!"
+        # Simulate success/failure
+        # exit 1  # Uncomment to simulate failure
 
-    - name: Rollback if failed
+    # --------- Stage 5: Rollback ---------
+    - name: Rollback if Failed
       if: failure()
       run: |
-        echo "Deployment failed! Rolling back..."
-        git revert HEAD --no-edit || echo "Rollback skipped (maybe nothing to revert)..."
+        echo "Something failed. Rolling back the last change..."
+        git revert HEAD --no-edit || echo "Rollback skipped (maybe nothing to revert)."
