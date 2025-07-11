@@ -24,4 +24,4 @@ jobs:
       if: failure()
       run: |
         echo "Deployment failed! Rolling back..."
-        git revert HEAD --no-edit || echo "Rollback skipped (maybe nothing to revert)"
+        git revert HEAD --no-edit || echo "Rollback skipped (maybe nothing to revert)..."
