@@ -39,7 +39,7 @@ jobs:
           # Simulate deployment (e.g., start a server or upload to a cloud)
           echo "Hello, World!"
           # Simulate success/failure
-          # exit 1  # Uncomment to simulate failure
+          exit 1  # Uncomment to simulate failure
 
       # --------- Stage 5: Rollback ---------
       - name: Rollback if Failed
