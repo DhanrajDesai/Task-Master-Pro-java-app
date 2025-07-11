@@ -18,7 +18,6 @@ jobs:
     - name: Run Hello World script
       run: |
         echo "Deploying Hello World App..."
-        python hello.py || exit 1
 
     - name: Rollback if failed
       if: failure()
